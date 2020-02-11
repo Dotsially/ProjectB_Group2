@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ProjectB_Group2/1.0.0": {
+        "runtime": {
+          "ProjectB_Group2.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ProjectB_Group2/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
