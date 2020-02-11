@@ -2,7 +2,7 @@
 
 namespace ProjectB_Group2
 {
-    class Program
+    class MainFile
     {
         static void Main(string[] args)
         {
