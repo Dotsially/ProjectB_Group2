@@ -5,13 +5,9 @@ namespace ProjectB_Group2
 {
     class SideClass
     {
-        public static void Func(string a)
+        public static void Func()
         {
-            int x = 2;
-            int y = 3;
-            while(x < y){
-            }
-              
+            Console.WriteLine("W.I.P");  
         }
     }
 }

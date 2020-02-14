@@ -6,6 +6,7 @@ namespace ProjectB_Group2
     {
         static void Main(string[] args)
         {
+            SideClass.Func();
             Console.WriteLine("Sally Buns fired!");
         }
     }
