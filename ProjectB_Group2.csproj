@@ -1,8 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include=".idea\.gitignore" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\.idea\contentModel.xml" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\.idea\encodings.xml" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\.idea\indexLayout.xml" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\.idea\modules.xml" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\.idea\projectSettingsUpdater.xml" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\.idea\vcs.xml" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\.idea\workspace.xml" />
+    <Content Include=".idea\.idea.ProjectB_Group2.dir\riderModule.iml" />
+  </ItemGroup>
 
 </Project>

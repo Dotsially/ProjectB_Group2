@@ -7,6 +7,7 @@ namespace ProjectB_Group2
         static void Main(string[] args)
         {
             Console.WriteLine("Sally Buns fired!");
+            Console.Beep();
         }
     }
 }
