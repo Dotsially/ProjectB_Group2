@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace ProjectB_Group2
 {
@@ -7,11 +8,10 @@ namespace ProjectB_Group2
         static void Main(string[] args)
         {
             SideClass.Func();
-            Console.WriteLine("Sally Buns fired!");
+            Colorful.Console.WriteLine("Sally Buns fired!", Color.Yellow);
             Console.ReadLine();
             
 
         }
     }
-
 }

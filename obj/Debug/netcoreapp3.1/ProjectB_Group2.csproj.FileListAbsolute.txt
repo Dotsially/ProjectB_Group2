@@ -9,3 +9,5 @@ C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\Projec
 C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.AssemblyInfo.cs
 C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.dll
 C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.pdb
+C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\bin\Debug\netcoreapp3.1\Colorful.Console.dll
+C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.csproj.CopyComplete
