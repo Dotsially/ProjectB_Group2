@@ -8,6 +8,10 @@ namespace ProjectB_Group2
         {
             SideClass.Func();
             Console.WriteLine("Sally Buns fired!");
+            Console.ReadLine();
+            
+
         }
     }
+
 }
