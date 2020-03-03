@@ -9,3 +9,14 @@ C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\Projec
 C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.AssemblyInfo.cs
 C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.dll
 C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.pdb
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\bin\Debug\netcoreapp3.1\ProjectB_Group2.exe
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\bin\Debug\netcoreapp3.1\ProjectB_Group2.deps.json
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\bin\Debug\netcoreapp3.1\ProjectB_Group2.runtimeconfig.json
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\bin\Debug\netcoreapp3.1\ProjectB_Group2.runtimeconfig.dev.json
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\bin\Debug\netcoreapp3.1\ProjectB_Group2.dll
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\bin\Debug\netcoreapp3.1\ProjectB_Group2.pdb
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.csprojAssemblyReference.cache
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.AssemblyInfoInputs.cache
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.AssemblyInfo.cs
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.dll
+C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.pdb

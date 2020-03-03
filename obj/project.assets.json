@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Matheus\\.nuget\\packages\\": {}
+    "C:\\Users\\kylia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Matheus\\Documents\\GitHub\\ProjectB_Group2\\ProjectB_Group2.csproj",
+      "projectUniqueName": "C:\\Users\\kylia\\source\\repos\\Dotsially\\ProjectB_Group2\\ProjectB_Group2.csproj",
       "projectName": "ProjectB_Group2",
-      "projectPath": "C:\\Users\\Matheus\\Documents\\GitHub\\ProjectB_Group2\\ProjectB_Group2.csproj",
-      "packagesPath": "C:\\Users\\Matheus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Matheus\\Documents\\GitHub\\ProjectB_Group2\\obj\\",
+      "projectPath": "C:\\Users\\kylia\\source\\repos\\Dotsially\\ProjectB_Group2\\ProjectB_Group2.csproj",
+      "packagesPath": "C:\\Users\\kylia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kylia\\source\\repos\\Dotsially\\ProjectB_Group2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Matheus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kylia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
