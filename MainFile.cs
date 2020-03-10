@@ -7,7 +7,8 @@ namespace ProjectB_Group2
         static void Main(string[] args)
         {
             Console.WriteLine("Sally Buns fired!");
-            Console.WriteLine("Waarom werk jij niet");
+            Console.WriteLine("10-3");
+            Console.WriteLine("10-3 test");
         }
     }
 }
