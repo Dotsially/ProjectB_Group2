@@ -7,9 +7,7 @@ namespace ProjectB_Group2
     {
         static void Main(string[] args)
         {
-            SideClass.Func();
-            Colorful.Console.WriteLine("Sally Buns fired!", Color.Yellow);
-            Console.ReadLine();
+            Menu.MainMenu();
             
 
         }
