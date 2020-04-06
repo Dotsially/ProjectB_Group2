@@ -5,10 +5,14 @@ namespace ProjectB_Group2
 {
     class MainFile
     {
+        public static bool run = true;
         static void Main(string[] args)
         {
-            Menu.MainMenu();
-            
+            while (run)
+            {
+                LoginClass.LoginMethod();
+                Menu.MainMenu();
+            }
 
         }
     }

@@ -4,7 +4,13 @@ using System.Text;
 
 namespace ProjectB_Group2
 {
-    class Class1
-    {
+    class Reviews
+    { 
+        public static void Reviewmanager()
+        {
+
+        }
+          
+
     }
 }
