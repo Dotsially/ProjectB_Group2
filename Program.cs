@@ -1,232 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Menu
+namespace Review
 {
     class Program
     {
-        // ============================  Class Declaration =============================================================
-
-        public class Dishes
+        // ================================= Variables ======================================
+        public class Review
         {
-            // ===========================  Variables =================================================================
+            public string Name;
+            public string LastName;
+            public string[] Comments;
+            static List<Review> Objects = new List<Review>(); 
 
-            string Name;
-            string Description;
-            double Price;
-            string Location;
-            static List<Dishes> lstApettizers = new List<Dishes>();
-            static List<Dishes> lstMainMenu = new List<Dishes>();
-            static List<Dishes> lstDesserts = new List<Dishes>();
-            public Dishes(string name, double price, string description)
+            public Review(string name, string lastname, string[] comments)
             {
-                Name = name;
-                Price = price;
-                Description = description;
+                this.Name = name;
+                this.LastName = lastname;
+                this.Comments = comments;
+            }
+            // ================================= Confirmation ======================================
+            public void confirmation()
+            {
+
+                Console.WriteLine("Your comment:\n");
+                for(int i = 0; i < Comments.Length; i++)
+                {
+                    Console.WriteLine(this.Comments[i]);
+                }
+                Console.WriteLine("\nHas been added to the comments");
+                
+               
+            }
+            // ============================== Display the comments ======================================
+            public void DisplayComments()
+            {
+                string line = new String('-', (100));
+                Console.WriteLine(line);
+                Console.WriteLine(this.Name + " " + this.LastName + "\n");
+                for(int i = 0; i < Comments.Length; i++)
+                {
+                    Console.WriteLine(Comments[i]);
+                }
+                Console.WriteLine();
+            }
+
+
+
+            // ================================= Add Comment ======================================
+            public static void WriteComment()
+            {
+                string name, Lastname, comment;
+                int i, count;
+                string[] addComment = new string[40];
+
+                //Enter name, Lastname and comment
+                Console.WriteLine("Please enter your name:");
+                name = Console.ReadLine();
+
+                Console.WriteLine("Please enter your lastname:");
+                Lastname = Console.ReadLine();
+
+                Console.WriteLine("Add your comment below:");
+                for(i = 0, count = 0; (comment = Console.ReadLine()) != "" && i < addComment.Length; i++)
+                {
+                    addComment[i] = comment;
+                    count++;
+                }
+                
+                //Remove null values from Array. Maybe try this with a list?
+                string[] newArrComments = new string[count];
+                for(i = 0; i < count; i++)
+                {
+                    newArrComments[i] = addComment[i];
+                }
+                
+                Review newComment = new Review(name, Lastname, newArrComments);
+                Objects.Add(newComment);
+                newComment.confirmation();
                 
             }
 
-            // ======================== Declaration of Class ============================================================
-            public string PrintDishes()
+            static void Main(string[] args)
             {
-                int x = this.Name.Length;
-                string line = new String('-', (50 - x));
-                return this.Name + line + "$" + this.Price + "\n  +" + this.Description;
-            }
 
-            // =================================  Display Menu ===============================================================
 
-            public static void DisplayMenu(List<Dishes> Apettizers, List<Dishes> MainDish, List<Dishes> Desserts)
-            {
-                //Find a way to add section name above the dishes, so Apettizers - "bread, salad, etc."
-                List<Dishes> newList = new List<Dishes>();
-                newList.AddRange(Apettizers);
-                newList.AddRange(MainDish);
-                newList.AddRange(Desserts);
-                string[] array = new string[] { "Appetizers", "MainDishes", "Desserts" };
-                foreach (Dishes Section in newList)
+                char answer;
+                Console.WriteLine("Do you want to leave a commment or see the comment section?" +
+                    "Press [Y] to leave a comment, [S] to see the comments or [N] for no.");
+                answer = Convert.ToChar(Console.ReadLine());
+                if (answer == 'Y' || answer == 'y')
                 {
-                    Console.WriteLine(Section.PrintDishes() + "\n");
-
-                }
-            }
-
-
-
-            // ============================ naam van het gerecht ========================================================
-
-            public string getName()
-
-            {
-
-                return Name;
-
-            }
-
-
-
-            // ========================= beschrijving van het gerecht ===================================================
-
-            public string getdescription()
-
-            {
-
-                return Description;
-
-            }
-
-
-
-            //============================== prijs van het gerecht ======================================================
-
-            public double getprice()
-
-            {
-
-                return Price;
-
-            }
-
-
-
-            // ============================ locatie van het gerecht =====================================================
-
-            public string getlocation()
-
-            {
-
-                return Location;
-
-            }
-
-
-
-            // =============================== Method add ==============================================================
-
-            public static void AddDishes()
-            {
-
-
-                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts");
-                int x = Convert.ToInt32(Console.ReadLine());
-                if (x == 1)
+                    WriteComment();
+                    Main(null);
+                } else if (answer == 'S' || answer == 's')
                 {
-                    newDishes(lstApettizers);
-                }
-                else if (x == 2)
-                {
-                    newDishes(lstMainMenu);
-                }
-                else if (x == 3)
-                {
-                    newDishes(lstDesserts);
-                }
-
-            }
-
-
-            // ============================= Method Remove =========================================================
-
-            public static void RemoveDish(List<Dishes> lst)
-
-            {
-                Console.WriteLine("Which Dish do you want to remove from the menu?");
-                string Remove = Console.ReadLine();
-                Console.WriteLine(Remove);
-                for(int i = 0; i < lst.Count; i++)
-                {
-
-                    Console.WriteLine("Test");
-                    if (lst[i].Name == Remove)
+                    foreach(Review comments in Objects)
                     {
-                        lst.RemoveAt(i);
-                        Console.WriteLine("The Dish " + Remove + " was successfully removed");
-
+                        comments.DisplayComments();
                     }
-
+                } else
+                {
+                    return;
                 }
 
             }
-
-
-            // ============================== Adding dishes to the right list =============================================================
-            public static void newDishes(List<Dishes> lst)
-            {
-                
-                Console.WriteLine("Enter the amount of dishes you want to add: ");
-                int x = Convert.ToInt32(Console.ReadLine());
-                for (int i = 0; i < x; i++)
-                {
-                    Console.WriteLine("Enter the name of the dish:");
-                    string name = Console.ReadLine();
-                    Console.WriteLine("Enter the price of the dish:");
-                    double price = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Enter the description of the given dish:");
-                    string description = Console.ReadLine();
-                    Dishes newDish = new Dishes(name, price, description);
-                    lst.Add(newDish);
-                }
-                
-
-                
-                foreach(Dishes dish in lst)
-                {
-                    Console.WriteLine(dish.PrintDishes());
-                }
-            }
-
-            public static void RemoveDishes()
-            {
-                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts");
-                int x = Convert.ToInt32(Console.ReadLine());
-                if (x == 1)
-                {
-                    RemoveDish(lstApettizers);
-                }
-                else if (x == 2)
-                {
-                    RemoveDish(lstMainMenu);
-                }
-                else if (x == 3)
-                {
-                    RemoveDish(lstDesserts);
-                }
-
-            }
-
-            public static void Main(string[] args)
-
-            {
-
-                // =========================== Creating object ==========================================================
-                /* Dishes PizzaMargherita = new Dishes("Pizza Margherita", "Pizza met zooi", 8, "Pizza");
-                 PizzaMargherita.AddDish(); 
-                 Console.WriteLine();
-                 PizzaMargherita.RemoveDish();
-                 Console.WriteLine(); */
-
-                //=========================== Adding dishes to the menu ==========================================================
-                Console.WriteLine("Do you want to add dishes to the menu? [Y] for yes and [N] for removing dishes from the menu or [M] for displaying the menu");
-                char answer = Convert.ToChar(Console.ReadLine());
-                if (answer == 'y' || answer == 'Y')
-                {
-                    AddDishes();
-                    Main(null);
-                } else if(answer == 'n' || answer == 'N')
-                {
-                    RemoveDishes();
-                    Main(null);
-                } else if (answer == 'm' || answer == 'M')
-                {
-                    DisplayMenu(lstApettizers, lstMainMenu, lstDesserts);
-                }
-
-
-
-            }
-
         }
-
     }
-
 }
