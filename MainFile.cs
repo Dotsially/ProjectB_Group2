@@ -11,6 +11,7 @@ namespace ProjectB_Group2
             while (run)
             {
                 LoginClass.LoginMethod();
+
                 Menu.MainMenu();
             }
 
