@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text.Json;
 using System.Text;
-
 namespace ProjectB_Group2
 {
     class LoginClass
     {
         static int n;
         static string c;
+        static string jsonString;
         static bool signupcheck = false;
         static bool loginrun = true;
         static bool numbercheckbool = true;
@@ -21,12 +22,11 @@ namespace ProjectB_Group2
             return false;
 
         }
-        
         static IDictionary<string, string> accounts = new Dictionary<string, string>();
-        
+
         public static void LoginMethod()
         {
-            while (loginrun)
+            while(loginrun)
             {
                 Console.WriteLine("Please login to proceed. \nDon't have an account? Sign up now!");
                 Colorful.Console.WriteLine("[1]Login [2]Sign up", Color.Yellow);
@@ -40,9 +40,8 @@ namespace ProjectB_Group2
                 }
                 
 
-
-            }       
-
+            }
+            System.IO.File.WriteAllText(@"C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\accounts.json", jsonString);
         }
         public static void SignUpMethod()
         {
@@ -62,6 +61,8 @@ namespace ProjectB_Group2
                 {
                     accounts.Add(a, b);
                     signupcheck = false;
+                    jsonString = JsonSerializer.Serialize(accounts);
+                    
                 }
                 Console.WriteLine("");
             }
