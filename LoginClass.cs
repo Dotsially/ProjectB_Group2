@@ -22,11 +22,13 @@ namespace ProjectB_Group2
             return false;
 
         }
-        static IDictionary<string, string> accounts = new Dictionary<string, string>();
+
+        static IDictionary<string, string> accounts = JsonSerializer.Deserialize<Dictionary<string, string>>(System.IO.File.ReadAllText(@"C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\accounts.json"));
 
         public static void LoginMethod()
         {
-            while(loginrun)
+            
+            while (loginrun)
             {
                 Console.WriteLine("Please login to proceed. \nDon't have an account? Sign up now!");
                 Colorful.Console.WriteLine("[1]Login [2]Sign up", Color.Yellow);
