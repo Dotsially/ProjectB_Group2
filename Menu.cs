@@ -33,22 +33,26 @@ namespace ProjectB_Group2
                     fmenu = true;
                 }
 
-                if (Menu.i == 2)
+                else if (Menu.i == 2)
                 {
                     mmenu = false;
                     rs = true;
                 }
 
-                if (Menu.i == 3)
+                else if (Menu.i == 3)
                 {
                     mmenu = false;
                     rv = true;
                 }
 
-                if (Menu.i == 4)
+                else if (Menu.i == 4)
                 {
                     mmenu = false;
                     MainFile.run = false;
+                }
+                else
+                {
+                    Colorful.Console.WriteLine("That's an invalid number", Color.Red);
                 }
 
             }

@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text.Json;
-using System.Text;
+using System.IO;
+using static ProjectB_Group2.Filemanager;
+
 namespace ProjectB_Group2
 {
     class LoginClass
     {
+        //Read/Write file from repo.
+        static IDictionary<string, string> accounts = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonpathread("accounts.json"));
+
+        //field
         static int n;
         static string c;
         static string jsonString;
+        
         static bool signupcheck = false;
         static bool loginrun = true;
         static bool numbercheckbool = true;
+        
         static bool accountcheck(string x, string y)
         {
             if (accounts.ContainsKey(x) && accounts[x].Equals(y))
@@ -22,8 +30,6 @@ namespace ProjectB_Group2
             return false;
 
         }
-
-        static IDictionary<string, string> accounts = JsonSerializer.Deserialize<Dictionary<string, string>>(System.IO.File.ReadAllText(@"C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\accounts.json"));
 
         public static void LoginMethod()
         {
@@ -40,10 +46,10 @@ namespace ProjectB_Group2
                     c = Console.ReadLine();
                     Numbercheck(c, n);
                 }
-                
+                jsonString = JsonSerializer.Serialize(accounts);
 
             }
-            System.IO.File.WriteAllText(@"C:\Users\Matheus\Documents\GitHub\ProjectB_Group2\accounts.json", jsonString);
+            File.WriteAllText(jsonpathwrite("accounts.json"), jsonString);
         }
         public static void SignUpMethod()
         {
@@ -62,9 +68,7 @@ namespace ProjectB_Group2
                 else
                 {
                     accounts.Add(a, b);
-                    signupcheck = false;
-                    jsonString = JsonSerializer.Serialize(accounts);
-                    
+                    signupcheck = false;                    
                 }
                 Console.WriteLine("");
             }
