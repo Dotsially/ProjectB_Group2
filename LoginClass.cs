@@ -4,13 +4,13 @@ using System.Drawing;
 using System.Text.Json;
 using System.IO;
 using static ProjectB_Group2.Filemanager;
+using Newtonsoft.Json;
+
 
 namespace ProjectB_Group2
 {
     class LoginClass
     {
-        //Read/Write file from repo.
-        static IDictionary<string, string> accounts = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonpathread("accounts.json"));
 
         //field
         static int n;
@@ -21,6 +21,7 @@ namespace ProjectB_Group2
         static bool loginrun = true;
         static bool numbercheckbool = true;
         
+        static Dictionary<string, string> accounts = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonpathread("accounts.json"));
         static bool accountcheck(string x, string y)
         {
             if (accounts.ContainsKey(x) && accounts[x].Equals(y))
@@ -31,6 +32,7 @@ namespace ProjectB_Group2
 
         }
 
+        //Main function
         public static void LoginMethod()
         {
             
@@ -46,11 +48,13 @@ namespace ProjectB_Group2
                     c = Console.ReadLine();
                     Numbercheck(c, n);
                 }
-                jsonString = JsonSerializer.Serialize(accounts);
+                jsonString = JsonConvert.SerializeObject(accounts);
 
             }
             File.WriteAllText(jsonpathwrite("accounts.json"), jsonString);
         }
+
+        //Sign up function.
         public static void SignUpMethod()
         {
             while (signupcheck)
@@ -74,6 +78,8 @@ namespace ProjectB_Group2
             }
             
         }
+
+        //Login function
         public static void LoginFunction()
         {
             Console.WriteLine("Welcome to the Login screen. Please login to continue.");
@@ -94,6 +100,8 @@ namespace ProjectB_Group2
             Console.WriteLine("");
 
         }
+
+        //Check to see if the user inputs the right number.
         public static void Numbercheck(string x, int z)
         {
             bool strconverter = int.TryParse(x, out z);

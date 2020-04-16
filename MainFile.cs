@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using static ProjectB_Group2.Filemanager;
+using static ProjectB_Group2.LoginClass;
+using static ProjectB_Group2.Menu;
 
 namespace ProjectB_Group2
 {
@@ -8,13 +11,7 @@ namespace ProjectB_Group2
         public static bool run = true;
         static void Main(string[] args)
         {
-            while (run)
-            {
-                LoginClass.LoginMethod();
-
-                Menu.MainMenu();
-            }
-
+            
         }
     }
 }
