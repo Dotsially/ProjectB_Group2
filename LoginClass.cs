@@ -9,17 +9,15 @@ using Newtonsoft.Json;
 namespace ProjectB_Group2
 {
     class LoginClass
-    {
-
+    { 
         //field
         static int n;
         static string c;
         static string jsonString;
-        
         static bool signupcheck = false;
         static bool loginrun = true;
         static bool numbercheckbool = true;
-        
+   
         static Dictionary<string, string> accounts = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonpathread("accounts.json"));
         static bool accountcheck(string x, string y)
         {
@@ -34,7 +32,7 @@ namespace ProjectB_Group2
         //Main function
         public static void LoginMethod()
         {
-            
+
             while (loginrun)
             {
                 Console.WriteLine("Please login to proceed. \nDon't have an account? Sign up now!");
@@ -63,15 +61,15 @@ namespace ProjectB_Group2
                 string a = Console.ReadLine();
                 Console.Write("Password: ");
                 string b = Console.ReadLine();
-
+                
                 if (accounts.ContainsKey(a))
                 {
                     Colorful.Console.WriteLine("That username is already in use.", Color.Red);
                 }
                 else
                 {
-                    accounts.Add(a, b);
-                    signupcheck = false;                    
+                    accounts.Add(a, b); 
+                    signupcheck = false;
                 }
                 Console.WriteLine("");
             }
