@@ -11,7 +11,9 @@ namespace ProjectB_Group2
         public static bool run = true;
         static void Main(string[] args)
         {
-            
+            RestaurantSetup();
+            LoginMethod();
+            MainMenu();
         }
     }
 }
