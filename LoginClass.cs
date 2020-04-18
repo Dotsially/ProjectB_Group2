@@ -62,7 +62,11 @@ namespace ProjectB_Group2
                 Console.Write("Password: ");
                 string b = Console.ReadLine();
                 
-                if (accounts.ContainsKey(a))
+                if (a == "" && b == "")
+                {
+                    Colorful.Console.WriteLine("That username and password combination is invalid. Please try again.", Color.Red);
+                }
+                else if (accounts.ContainsKey(a))
                 {
                     Colorful.Console.WriteLine("That username is already in use.", Color.Red);
                 }
@@ -84,15 +88,19 @@ namespace ProjectB_Group2
             string a = Console.ReadLine();
             Console.Write("Password: ");
             string b = Console.ReadLine();
-            if (accountcheck(a, b))
+            if (!accountcheck(a, b))
+            {
+                Colorful.Console.WriteLine("That username and password combination doesn't exist. Please try again.", Color.Red);
+            }
+            else if(a == "" && b == "")
+            {
+                Colorful.Console.WriteLine("That username and password combination is invalid. Please try again.", Color.Red);
+            }
+            else
             {
                 Console.WriteLine("");
                 Console.WriteLine("Welcome " + a + "!");
                 loginrun = false;
-            }
-            else
-            {
-                Colorful.Console.WriteLine("That username and password combination doesn't exist. Please try again.", Color.Red);
             }
             Console.WriteLine("");
 
