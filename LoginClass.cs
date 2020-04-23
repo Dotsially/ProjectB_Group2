@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using static ProjectB_Group2.Filemanager;
 using Newtonsoft.Json;
+using System.Windows.Input;
 
 
 namespace ProjectB_Group2
@@ -50,7 +51,7 @@ namespace ProjectB_Group2
             }
             File.WriteAllText(jsonpathwrite("accounts.json"), jsonString);
         }
-
+        
         //Sign up function.
         public static void SignUpMethod()
         {
@@ -61,10 +62,9 @@ namespace ProjectB_Group2
                 string a = Console.ReadLine();
                 Console.Write("Password: ");
                 string b = Console.ReadLine();
-                
-                if (a == "" && b == "")
+                if (a.Length < 6)
                 {
-                    Colorful.Console.WriteLine("That username and password combination is invalid. Please try again.", Color.Red);
+                    Colorful.Console.WriteLine("Your username has to be at least 6 characters long.", Color.Red);
                 }
                 else if (accounts.ContainsKey(a))
                 {
@@ -128,6 +128,10 @@ namespace ProjectB_Group2
                 {
                     Colorful.Console.WriteLine("That's an invalid number", Color.Red);
                 }
+            }
+            else
+            {
+                Colorful.Console.WriteLine("That's an invalid number", Color.Red);
             }
         }
         
