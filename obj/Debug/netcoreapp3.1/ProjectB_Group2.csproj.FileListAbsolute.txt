@@ -20,3 +20,7 @@ C:\Users\micha\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB
 C:\Users\micha\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.AssemblyInfo.cs
 C:\Users\micha\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.dll
 C:\Users\micha\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.pdb
+C:\Users\micha\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.genruntimeconfig.cache
+C:\Users\micha\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.csproj.CoreCompileInputs.cache
+C:\Users\micha\Documents\GitHub\ProjectB_Group2\bin\Debug\netcoreapp3.1\CsvHelper.dll
+C:\Users\micha\Documents\GitHub\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.csproj.CopyComplete
