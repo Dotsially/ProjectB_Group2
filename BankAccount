@@ -1,0 +1,96 @@
+using System;
+
+namespace BankTransfer
+{
+    public class BankAccount
+    {
+        public double CompanyBalance;
+        public string Title;
+
+        public BankAccount(double income)
+        {
+            CompanyBalance = income;
+            Title = "Company bank account";
+        }
+
+        public void deposit(double amount)
+        {
+            CompanyBalance += amount;
+        }
+       
+
+        public void withdraw(double amount)
+        {
+            CompanyBalance -= amount;
+        }
+
+        public virtual string Info()
+        {
+            return $"{Title} currently holds: {CompanyBalance} $";
+        }
+    }
+
+    public class CompanyThreshold : BankAccount
+    {
+        public string BankAccountName;
+        public string Password;
+        public bool login;
+
+        public CompanyThreshold(double income) : base(income)
+        {
+            Title = "Company threshold";
+            BankAccountName = "ProjectBAccount";
+            Password = "ADKMMM2020";
+
+        }
+        public bool LoginIn(string acc, string pass)
+        {
+            if (acc == BankAccountName && pass == Password)
+            {
+                login = true;
+            }
+            return login;
+        }
+
+        public override string Info()
+        {
+            return $"{Title} currently holds: {CompanyBalance} $";
+            
+        }
+
+    }
+ 
+   
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Global variable/object, so we don't have multiple objects.
+            CompanyThreshold check = new CompanyThreshold(1000.00);
+            Console.WriteLine("Enter your bank account: ");
+            string account = Console.ReadLine();
+            Console.WriteLine("Enter your password: ");
+            string password = Console.ReadLine();
+            if (check.LoginIn(account, password))
+            {
+                check.withdraw(10.0);
+                Console.WriteLine("Would you like to deposite some money to your company threshold, [Y] for yes and [N] for no");
+                char answer = Convert.ToChar(Console.ReadLine());
+                char.ToUpper(answer);
+
+                if (answer == 'Y')
+                {
+                    Console.WriteLine("Enter the amount you want to add to the threshold.");
+                    double amount = Convert.ToDouble(Console.ReadLine());
+                    CompanyThreshold deposit = new CompanyThreshold(amount);
+                    Console.WriteLine(deposit.Info());
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect account, bye.");
+            }
+        }
+    }
+}
