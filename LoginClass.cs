@@ -66,13 +66,17 @@ namespace ProjectB_Group2
                 {
                     Colorful.Console.WriteLine("Your username has to be at least 6 characters long.", Color.Red);
                 }
+                else if (b.Length < 8)
+                {
+                    Colorful.Console.WriteLine("Your password has to be at least 8 characters long.", Color.Red);
+                }
                 else if (accounts.ContainsKey(a))
                 {
                     Colorful.Console.WriteLine("That username is already in use.", Color.Red);
                 }
                 else
                 {
-                    accounts.Add(a, b); 
+                    accounts.Add(a, b);
                     signupcheck = false;
                 }
                 Console.WriteLine("");
