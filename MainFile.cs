@@ -8,7 +8,7 @@ namespace ProjectB_Group2
     public partial class MainFile
     {
         public static bool run = true;
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             while (run)
             {

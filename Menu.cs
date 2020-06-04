@@ -43,6 +43,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     rv = true;
+                    ReviewClass.Review.ReviewFunction();
                 }
 
                 else if (Menu.i == 4)
@@ -59,19 +60,19 @@ namespace ProjectB_Group2
 
             while (fmenu == true)
             {
-                Colorful.Console.WriteLine("W.I.P Menu\n[0] To Return", Color.Yellow);
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
                 Menu.Numbercheck(ref fmenu);
             }
 
             while (rv == true)
             {
-                Colorful.Console.WriteLine("W.I.P Reviews\n[0] To Return", Color.Yellow);
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
                 Menu.Numbercheck(ref rv);
             }
 
             while (rs == true)
             {
-                Colorful.Console.WriteLine("W.I.P Reservation\n[0] To Return", Color.Yellow);
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
                 Menu.Numbercheck(ref rs);
 
             }
