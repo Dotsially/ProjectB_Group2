@@ -335,32 +335,30 @@ namespace Menu
 
                 if (answer == 'Y')
                 {
+                    Console.Clear();
                     AddDishes();
-                    Console.WriteLine();
+                    Console.Clear();
                     Main(null);
                 }
-                else if (answer == 'N')
+                else if (answer == '2')
                 {
+                    Console.Clear();
                     RemoveDishes();
-                    Console.WriteLine();
+                    Console.Clear();
                     Main(null);
                 }
-                else if (answer == 'M')
+                else if (answer == '3')
                 {
+                    Console.Clear();
                     DisplayMenu(lstApettizers, lstMainMenu, lstDesserts);
-                    Console.WriteLine();
+                    Console.Clear();
                     Main(null);
                 }
-                else if (answer == 'C')
+                else if (answer == '4')
                 {
+                    Console.Clear();
                     ChangePrices();
-                    Console.WriteLine();
-                    Main(null);
-                }
-                else if (answer == 'P')
-                {
-                    //JsonMenu.Test(); //Werkt nog niet
-                    Console.WriteLine();
+                    Console.Clear();
                     Main(null);
 
                 }

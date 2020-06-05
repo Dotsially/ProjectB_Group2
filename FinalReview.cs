@@ -155,15 +155,19 @@ namespace Review
 
                 if (answer == '1')
                 {
+                    Console.Clear();
                     WriteComment();
+                    Console.Clear();
                     Main(null);
                 }
                 else if (answer == '2')
                 {
+                    Console.Clear();
                     foreach (Review comments in Objects)
                     {
                         comments.DisplayComments();
                     }
+                    Main(null);
                 }
                 else
                 {
