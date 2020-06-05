@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Menu;
 
 namespace Review
 {
@@ -63,25 +64,25 @@ namespace Review
                 int i, count;
                 string[] addComment = new string[40];
 
-
                 //=====================Enter name, Lastname, Phone number, Mail and comment=========================
                 Console.WriteLine("Please enter your name:");
-                name = Console.ReadLine();
+                name = Menu.Program.Dishes.validateString();
+
 
                 Console.WriteLine("Please enter your lastname:");
-                Lastname = Console.ReadLine();
+                Lastname = Menu.Program.Dishes.validateString();
 
                 Console.WriteLine("On a scale of 1 to 5, how do you rate your experience?");
-                Stars = Convert.ToInt32(Console.ReadLine());
+                Stars = Menu.Program.Dishes.validateInt();
 
                 Console.WriteLine("Please enter your phone number: (Purely for us)");
-                PhoneNumber = Convert.ToInt32(Console.ReadLine());
+                PhoneNumber = Menu.Program.Dishes.validateInt();
 
                 Console.WriteLine("Please enter your mail address: (Purely for us)");
-                Mail = Console.ReadLine();
+                Mail = Menu.Program.Dishes.validateString();
 
                 Console.WriteLine("Add your comment below:");
-                for (i = 0, count = 0; (comment = Console.ReadLine()) != "" && i < addComment.Length; i++)
+                for (i = 0, count = 0; (comment = Menu.Program.Dishes.validateString()) != "" && i < addComment.Length; i++)
                 {
                     addComment[i] = comment;
                     count++;
@@ -94,7 +95,6 @@ namespace Review
                     newArrComments[i] = addComment[i];
                 }
 
-                //================= Add the comment with information to Objects List=======================================
                 Review newComment = new Review(name, Lastname, Stars, PhoneNumber, Mail, newArrComments);
                 Objects.Add(newComment);
                 newComment.confirmation();
@@ -103,32 +103,52 @@ namespace Review
 
             static void Main(string[] args)
             {
-
-
-                char answer;
+                char[] charArray = new char[] { '1', '2', '3' };
                 Console.WriteLine("Do you want to leave a commment or see the comment section?" +
-                    "Press [Y] to leave a comment, [S] to see the comments or [N] for no.");
-                answer = Convert.ToChar(Console.ReadLine());
-                if (answer == 'Y' || answer == 'y')
+                    "Press [1] to leave a comment, [2] to see the comments or [3] for no."); bool check = true;
+                char answer = 'E';
+                while (check)
+                {
+                    try
+                    {
+                        answer = Convert.ToChar(Console.ReadLine());
+                        answer = char.ToUpper(answer);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("That's not a character, please enter one of the characters defined above to proceed in the program.");
+                    }
+                    for (int i = 0; i < charArray.Length; i++)
+                    {
+                        if (answer == charArray[i])
+                        {
+                            check = false;
+                        }
+                    }
+                    if (check == true)
+                    {
+                        Console.WriteLine("{0} isn't a valid character, please enter one of the characters defined above to proceed in the program.", answer);
+                    }
+                }
+
+                if (answer == '1')
                 {
                     WriteComment();
                     Main(null);
                 }
-                else if (answer == 'S' || answer == 's')
+                else if (answer == '2')
                 {
                     foreach (Review comments in Objects)
                     {
                         comments.DisplayComments();
                     }
-                    Main(null);
                 }
                 else
                 {
-                    Environment.Exit(0);
+                    return;
                 }
 
             }
         }
     }
 }
-

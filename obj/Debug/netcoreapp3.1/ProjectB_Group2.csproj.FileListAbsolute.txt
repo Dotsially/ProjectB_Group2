@@ -20,3 +20,4 @@ C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\Pr
 C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.AssemblyInfo.cs
 C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.dll
 C:\Users\kylia\Source\Repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.pdb
+C:\Users\kylia\source\repos\Dotsially\ProjectB_Group2\obj\Debug\netcoreapp3.1\ProjectB_Group2.csproj.CoreCompileInputs.cache

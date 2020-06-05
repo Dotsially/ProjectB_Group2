@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection.Metadata;
+//using System.Text.Json;
+//using System.Text.Json.Serialization;
+//using Newtonsoft.Json;
 
 namespace Menu
 {
@@ -18,6 +23,7 @@ namespace Menu
             static List<Dishes> lstApettizers = new List<Dishes>();
             static List<Dishes> lstMainMenu = new List<Dishes>();
             static List<Dishes> lstDesserts = new List<Dishes>();
+            static List<Dishes> lstDrinks = new List<Dishes>();
             public Dishes(string name, double price, string description)
             {
                 Name = name;
@@ -82,8 +88,8 @@ namespace Menu
 
             public static void AddDishes()
             {
-                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts");
-                int x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts or [0] to go back to the menu.");
+                int x = validateInt();
                 if (x == 1)
                 {
                     newDishes(lstApettizers);
@@ -96,6 +102,10 @@ namespace Menu
                 {
                     newDishes(lstDesserts);
                 }
+                else
+                {
+                    Console.WriteLine("Back to the main menu.");
+                }
 
             }
 
@@ -104,10 +114,10 @@ namespace Menu
 
             public static void RemoveDish(List<Dishes> lst)
 
-            {
+            {   //add check if remove isn't empty.
                 Console.WriteLine();
                 Console.WriteLine("Which Dish do you want to remove from the menu?");
-                string Remove = Console.ReadLine();
+                string Remove = validateString();
                 for (int i = 0; i < lst.Count; i++)
                 {
                     if (lst[i].Name == Remove)
@@ -127,7 +137,7 @@ namespace Menu
             {
                 Console.WriteLine();
                 Console.WriteLine("Which Dish would you like to change?");
-                string change = Console.ReadLine();
+                string change = validateString();
                 for (int i = 0; i < lst.Count; i++)
                 {
                     if (lst[i].Name == change)
@@ -155,13 +165,13 @@ namespace Menu
                 {
                     Console.WriteLine();
                     Console.WriteLine("Enter the name of the dish:");
-                    string name = Console.ReadLine();
+                    string name = validateString();
                     Console.WriteLine();
                     Console.WriteLine("Enter the price of the dish:");
                     double price = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine();
                     Console.WriteLine("Enter the description of the given dish:");
-                    string description = Console.ReadLine();
+                    string description = validateString();
                     Dishes newDish = new Dishes(name, price, description);
                     lst.Add(newDish);
                 }
@@ -178,8 +188,8 @@ namespace Menu
             // ================================== Removing dishes from the right menu ======================================
             public static void RemoveDishes()
             {
-                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts");
-                int x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
+                int x = validateInt();
                 if (x == 1)
                 {
                     RemoveDish(lstApettizers);
@@ -192,6 +202,11 @@ namespace Menu
                 {
                     RemoveDish(lstDesserts);
                 }
+                else
+                {
+                    Console.WriteLine("Back to the main menu.");
+
+                }
 
             }
 
@@ -199,8 +214,8 @@ namespace Menu
             // ================================= Changing prices on the right menu ========================================
             public static void ChangePrices()
             {
-                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts");
-                int x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
+                int x = validateInt();
                 if (x == 1)
                 {
                     ChangePrice(lstApettizers);
@@ -213,52 +228,128 @@ namespace Menu
                 {
                     ChangePrice(lstDesserts);
                 }
+                else
+                {
+                    Console.WriteLine("Back to the main menu.");
+                }
+
+            }
+            public static int validateInt()
+            {
+                bool checker = true;
+                int x = 0;
+                while (checker)
+                {
+                    try
+                    {
+                        x = Convert.ToInt32(Console.ReadLine());
+                        if (x >= 0 && x < 4)
+                        {
+                            checker = false;
+                            return x;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect value, please enter a number between 1-3.");
+
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Incorrect value.");
+                    }
+                }
+                return x;
+
+            }
+
+            public static string validateString()
+            {
+                string x = "";
+
+                x = Console.ReadLine();
+                while (string.IsNullOrEmpty(x))
+                {
+                    Console.WriteLine("Invalid input! Please try again!");
+                    x = Console.ReadLine();
+                }
+                return x;
 
             }
 
             public static void Main(string[] args)
 
             {
+                //string json = JsonSerializer.Serialize(lstApettizers);
+                //Console.WriteLine(json);
+
 
                 //=========================== Main menu screen where you choose what to do ==========================================================
+                char[] charArray = new char[] { 'P', 'Y', 'N', 'M', 'C' };
                 Console.WriteLine("What do you want to do?\n[Y] for Adding dishes to the Menu\n[N] for Removing dishes from the Menu\n[M] for Displaying the Menu\n[C] to Change the price of a dish\nany other key to exit");
-                char answer = Convert.ToChar(Console.ReadLine());
-                if (answer == 'y' || answer == 'Y')
+                bool check = true;
+                char answer = 'E';
+                while (check)
+                {
+                    try
+                    {
+                        answer = Convert.ToChar(Console.ReadLine());
+                        answer = char.ToUpper(answer);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("That's not a character, please enter one of the characters defined above to proceed in the program.");
+                    }
+                    for (int i = 0; i < charArray.Length; i++)
+                    {
+                        if (answer == charArray[i])
+                        {
+                            check = false;
+                        }
+                    }
+                    if (check == true)
+                    {
+                        Console.WriteLine("{0} isn't a valid character, please enter one of the characters defined above to proceed in the program.", answer);
+                    }
+                }
+
+                if (answer == 'Y')
                 {
                     AddDishes();
                     Console.WriteLine();
                     Main(null);
                 }
-                else if (answer == 'n' || answer == 'N')
+                else if (answer == 'N')
                 {
                     RemoveDishes();
                     Console.WriteLine();
                     Main(null);
                 }
-                else if (answer == 'm' || answer == 'M')
+                else if (answer == 'M')
                 {
                     DisplayMenu(lstApettizers, lstMainMenu, lstDesserts);
                     Console.WriteLine();
                     Main(null);
                 }
-                else if (answer == 'c' || answer == 'C')
+                else if (answer == 'C')
                 {
                     ChangePrices();
                     Console.WriteLine();
                     Main(null);
                 }
-                else
+                else if (answer == 'P')
+                {
+                    //JsonMenu.Test(); //Werkt nog niet
+                    Console.WriteLine();
+                    Main(null);
+
+                }
+                else if (answer == 'E')
                 {
                     Environment.Exit(0);
                 }
-
-
-
             }
-
         }
-
     }
-
 }
 
