@@ -277,6 +277,26 @@ namespace Menu
 
             }
 
+            public static bool isNumeric(string s)
+            {
+                return int.TryParse(s, out int n);
+            }
+
+            public static string checkInt()
+            {
+                string s;
+
+                s = Console.ReadLine();
+
+                while (!isNumeric(s))
+                {
+                    Console.WriteLine("Invalid input! Please try again!");
+                    s = Console.ReadLine();
+                }
+                return s;
+
+            }
+
             public static void Main(string[] args)
 
             {

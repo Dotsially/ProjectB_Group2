@@ -13,12 +13,12 @@ namespace Review
             public string Name;
             public string LastName;
             public int Stars;
-            public int PhoneNumber;
+            public string PhoneNumber;
             public string Mail;
             public string[] Comments;
             static List<Review> Objects = new List<Review>();
 
-            public Review(string name, string lastname, int Stars, int PhoneNumber, string Mail, string[] comments)
+            public Review(string name, string lastname, int Stars, string PhoneNumber, string Mail, string[] comments)
             {
                 this.Name = name;
                 this.LastName = lastname;
@@ -59,8 +59,8 @@ namespace Review
             // ================================= Add Comment ======================================
             public static void WriteComment()
             {
-                string name, Lastname, comment, Mail;
-                int Stars, PhoneNumber;
+                string name, Lastname, comment, Mail, PhoneNumber;
+                int Stars;
                 int i, count;
                 string[] addComment = new string[40];
 
@@ -73,16 +73,38 @@ namespace Review
                 Lastname = Menu.Program.Dishes.validateString();
 
                 Console.WriteLine("On a scale of 1 to 5, how do you rate your experience?");
-                Stars = Menu.Program.Dishes.validateInt();
+                Stars = 0;
+                bool checker = true;
+                while (checker)
+                {
+                    try
+                    {
+                        Stars = Convert.ToInt32(Console.ReadLine());
+                        if (Stars > 0 && Stars < 4)
+                        {
+                            checker = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect value, please enter a number between 1-5.");
+
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Incorrect value.");
+                    }
+                }
+
 
                 Console.WriteLine("Please enter your phone number: (Purely for us)");
-                PhoneNumber = Menu.Program.Dishes.validateInt();
+                PhoneNumber = Menu.Program.Dishes.checkInt();
 
                 Console.WriteLine("Please enter your mail address: (Purely for us)");
                 Mail = Menu.Program.Dishes.validateString();
 
                 Console.WriteLine("Add your comment below:");
-                for (i = 0, count = 0; (comment = Menu.Program.Dishes.validateString()) != "" && i < addComment.Length; i++)
+                for (i = 0, count = 0; (comment = Console.ReadLine()) != "" && i < addComment.Length; i++)
                 {
                     addComment[i] = comment;
                     count++;
