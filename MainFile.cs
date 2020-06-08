@@ -1,4 +1,8 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
+
+
+
 
 class MainClass
 {
@@ -13,6 +17,31 @@ class MainClass
         int Test = 0;
         bool allDigits = false;
         bool allDigits2 = false;
+
+    
+        string resName;
+        string resNumber;
+        string resEmail;
+        string resDate;
+
+
+        Console.WriteLine("What name should we use for the reservation?");
+        resName = Console.ReadLine();
+
+        Console.WriteLine("What telephone number should we use for the reservation?");
+        resNumber = Console.ReadLine();
+
+        Console.WriteLine("What email should we use for the reservation?");
+        resEmail = Console.ReadLine();
+
+        Console.WriteLine("What date wold you like to reserve?");
+        resDate = Console.ReadLine();
+
+        
+
+
+
+
 
         // INTRO, SHOW CAPACITY AND ENTER HOW MANY PEOPLE YOU WANT TO RESERVE FOR. 
         Console.WriteLine("We have a total of " + TotalCapacity + " seats.");
@@ -181,6 +210,11 @@ class MainClass
                 Console.WriteLine("Reservation Complete! Thank you for reserving at our restaurant, whe hope to see you soon!");
                 Console.WriteLine("We have " + TotalCapacity + " seats left");
                 Console.ReadLine();
+
+
+
+
+
             }
         }
 
