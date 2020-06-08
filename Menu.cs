@@ -31,6 +31,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     fmenu = true;
+                    Program.Dishes.MenuFunction();
                 }
 
                 else if (Menu.i == 2)
@@ -43,7 +44,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     rv = true;
-                    ReviewClass.Review.ReviewFunction();
+                    Review2.Review.ReviewFunction();
                 }
 
                 else if (Menu.i == 4)
