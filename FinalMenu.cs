@@ -88,8 +88,8 @@ namespace Menu
 
             public static void AddDishes()
             {
-                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts or [0] to go back to the menu.");
-                int x = validateInt();
+                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
+                int x = Convert.ToInt32(checkInt());
                 if (x == 1)
                 {
                     newDishes(lstApettizers);
@@ -102,9 +102,14 @@ namespace Menu
                 {
                     newDishes(lstDesserts);
                 }
+                else if (x == 0)
+                {
+                    Main(null);
+                }
                 else
                 {
-                    Console.WriteLine("Back to the main menu.");
+                    Console.WriteLine("Incorrect Value, Please enter one of the characters specified above!");
+                    AddDishes();
                 }
 
             }
@@ -144,7 +149,17 @@ namespace Menu
                     {
                         Console.WriteLine();
                         Console.WriteLine("What is the new price of " + change + "?");
-                        double NewPrice = Convert.ToDouble(Console.ReadLine());
+                        string check = Console.ReadLine();
+                        double NewPrice;
+                        if (Double.TryParse(check, out NewPrice))
+                            Console.WriteLine("'{0}' --> {1}", check, NewPrice);
+                        else
+                            Console.WriteLine("Incorrect value, Please enter a number:");
+                        while (!Double.TryParse(check, out NewPrice))
+                        {
+                            Console.WriteLine("Enter the price of the dish:");
+                            check = Console.ReadLine();
+                        }
                         lst[i].Price = NewPrice;
                         Console.WriteLine();
                         Console.WriteLine("The Price of " + change + " was updated to: " + NewPrice);
@@ -160,7 +175,7 @@ namespace Menu
             {
 
                 Console.WriteLine("Enter the amount of dishes you want to add: ");
-                int x = Convert.ToInt32(Console.ReadLine());
+                int x = Convert.ToInt32(checkInt()); 
                 for (int i = 0; i < x; i++)
                 {
                     Console.WriteLine();
@@ -168,7 +183,18 @@ namespace Menu
                     string name = validateString();
                     Console.WriteLine();
                     Console.WriteLine("Enter the price of the dish:");
-                    double price = Convert.ToDouble(Console.ReadLine());
+                    string check = Console.ReadLine();
+                    double price;
+                    if (Double.TryParse(check, out price))
+                        Console.WriteLine("'{0}' --> {1}", check, price);
+                    else
+                        Console.WriteLine("Incorrect value, Please enter a number:");
+                        while (!Double.TryParse(check, out price))
+                    {
+                        Console.WriteLine("Enter the price of the dish:");
+                        check = Console.ReadLine();
+                    }
+
                     Console.WriteLine();
                     Console.WriteLine("Enter the description of the given dish:");
                     string description = validateString();
@@ -189,7 +215,7 @@ namespace Menu
             public static void RemoveDishes()
             {
                 Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
-                int x = validateInt();
+                int x = Convert.ToInt32(checkInt());
                 if (x == 1)
                 {
                     RemoveDish(lstApettizers);
@@ -202,10 +228,14 @@ namespace Menu
                 {
                     RemoveDish(lstDesserts);
                 }
+                else if (x == 0)
+                {
+                    Main(null);
+                }
                 else
                 {
-                    Console.WriteLine("Back to the main menu.");
-
+                    Console.WriteLine("Incorrect value, Please enter one of the characters specified above!");
+                    AddDishes();
                 }
 
             }
@@ -215,7 +245,7 @@ namespace Menu
             public static void ChangePrices()
             {
                 Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
-                int x = validateInt();
+                int x = Convert.ToInt32(checkInt());
                 if (x == 1)
                 {
                     ChangePrice(lstApettizers);
@@ -228,9 +258,14 @@ namespace Menu
                 {
                     ChangePrice(lstDesserts);
                 }
+                else if (x == 0)
+                {
+                    Main(null);
+                }
                 else
                 {
-                    Console.WriteLine("Back to the main menu.");
+                    Console.WriteLine("Incorrect Value, Please enter one of the characters specified above!");
+                    AddDishes();
                 }
 
             }
@@ -274,7 +309,6 @@ namespace Menu
                     x = Console.ReadLine();
                 }
                 return x;
-
             }
 
             public static bool isNumeric(string s)
@@ -305,8 +339,8 @@ namespace Menu
 
 
                 //=========================== Main menu screen where you choose what to do ==========================================================
-                char[] charArray = new char[] { 'P', 'Y', 'N', 'M', 'C' };
-                Console.WriteLine("What do you want to do?\n[Y] for Adding dishes to the Menu\n[N] for Removing dishes from the Menu\n[M] for Displaying the Menu\n[C] to Change the price of a dish\nany other key to exit");
+                char[] charArray = new char[] { '1', '2', '3', '4', '5' };
+                Console.WriteLine("What do you want to do?\n[1] for Adding dishes to the Menu\n[2] for Removing dishes from the Menu\n[3] for Displaying the Menu\n[4] to Change the price of a dish\n[5] to exit");
                 bool check = true;
                 char answer = 'E';
                 while (check)
@@ -327,42 +361,43 @@ namespace Menu
                             check = false;
                         }
                     }
+
                     if (check == true)
                     {
-                        Console.WriteLine("{0} isn't a valid character, please enter one of the characters defined above to proceed in the program.", answer);
+                        Console.WriteLine("Please try again!");
                     }
                 }
 
-                if (answer == 'Y')
+                if (answer == '1')
                 {
                     Console.Clear();
                     AddDishes();
-                    Console.Clear();
+                    Console.WriteLine();
                     Main(null);
                 }
                 else if (answer == '2')
                 {
                     Console.Clear();
                     RemoveDishes();
-                    Console.Clear();
+                    Console.WriteLine();
                     Main(null);
                 }
                 else if (answer == '3')
                 {
                     Console.Clear();
                     DisplayMenu(lstApettizers, lstMainMenu, lstDesserts);
-                    Console.Clear();
+                    Console.WriteLine();
                     Main(null);
                 }
                 else if (answer == '4')
                 {
                     Console.Clear();
                     ChangePrices();
-                    Console.Clear();
+                    Console.WriteLine();
                     Main(null);
 
                 }
-                else if (answer == 'E')
+                else if (answer == '5')
                 {
                     Environment.Exit(0);
                 }
