@@ -54,6 +54,15 @@ namespace ProjectB_Group2
             }
 
         }
+        public static void ReservationFileCreator(string x)
+        {
+            if (!File.Exists(x))
+            {     
+                var myFile = File.Create(x);
+                myFile.Close();
+            }
+
+        }
 
         public static void FolderCreator(string x)
         {
@@ -68,6 +77,7 @@ namespace ProjectB_Group2
         {
             FolderCreator(RestaurantDirec());
             FolderCreator(foldercreate("json"));
+            ReservationFileCreator(jsonfilecreate("reservations.json"));
             FileCreator(jsonfilecreate("accounts.json"), "", "");
         }
 

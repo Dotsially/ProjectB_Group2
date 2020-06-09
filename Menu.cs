@@ -38,13 +38,14 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     rs = true;
+                    ReservationsClass.Resevations();
                 }
 
                 else if (Menu.i == 3)
                 {
                     mmenu = false;
-                    rv = true;
                     Review2.Review.ReviewsFunction();
+                    rv = true;
                 }
 
                 else if (Menu.i == 4)
