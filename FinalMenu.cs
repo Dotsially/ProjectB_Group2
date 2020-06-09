@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection.Metadata;
-//using System.Text.Json;
-//using System.Text.Json.Serialization;
-//using Newtonsoft.Json;
 
 namespace ProjectB_Group2
 {
@@ -23,13 +20,47 @@ namespace ProjectB_Group2
             static List<Dishes> lstApettizers = new List<Dishes>();
             static List<Dishes> lstMainMenu = new List<Dishes>();
             static List<Dishes> lstDesserts = new List<Dishes>();
-            static List<Dishes> lstDrinks = new List<Dishes>();
             public Dishes(string name, double price, string description)
             {
                 Name = name;
                 Price = price;
                 Description = description;
 
+            }
+
+            public static void InitMenu(List<Dishes> apettizers, List<Dishes> Main, List<Dishes> Desserts)
+            {
+                // Appetizers
+                Dishes dish1 = new Dishes("Pane", 5.50, "Homemade bread with Tapenade");
+                Dishes dish2 = new Dishes("Insalata Mista", 5.50, "Small mixed salad");
+                Dishes dish3 = new Dishes("Insalata Vegetariana", 16.50, "Salad with different grilled vegetables");
+                Dishes dish4 = new Dishes("Spiedini Di Scampi", 10.00, "Grilled Shrimpskewer");
+                apettizers.Add(dish1);
+                apettizers.Add(dish2);
+                apettizers.Add(dish3);
+                apettizers.Add(dish4);
+
+                //Main Menu
+                Dishes dish5 = new Dishes("Pizza Margherita", 8.00, "Flour, Garlic, Tomatoes, Mozzarella, Basil");
+                Dishes dish6 = new Dishes("Pizza Prosciutto", 10.00, "Flour, Tomatoes, Parmesan Cheese, Prosciutto");
+                Dishes dish7 = new Dishes("Pizza Funghi", 10.50, "Flour, Tomatoes, Mozzarella, Mushrooms");
+                Dishes dish8 = new Dishes("Spaghetti Bolognese", 13.50, "Spaghetti, Tomato Sauce, Minced Meat, Onion, Celery");
+                Dishes dish9 = new Dishes("Spaghetti Al Pomodoro Fresco", 11.00, "Spaghetti, Tomato Sauce, Garlic, Basil");
+                Dishes dish10 = new Dishes("Penne Scampi", 17.00, "Shrimp in tomato sauce");
+                Main.Add(dish5);
+                Main.Add(dish6);
+                Main.Add(dish7);
+                Main.Add(dish8);
+                Main.Add(dish9);
+                Main.Add(dish10);
+
+                // Desserts
+                Dishes dish11 = new Dishes("Scroppino", 5.50, "Lemon sorbet with prosecco and vodka");
+                Dishes dish12 = new Dishes("Coupe Amarena", 6.50, "Vanilla ice cream with cherries and whipped cream");
+                Dishes dish13 = new Dishes("Coupe sorbetto", 6.50, "Sorbet with whipped cream and sorbetsauce");
+                Desserts.Add(dish11);
+                Desserts.Add(dish12);
+                Desserts.Add(dish13);
             }
 
             // ======================== Declaration of Class ============================================================
@@ -88,8 +119,8 @@ namespace ProjectB_Group2
 
             public static void AddDishes()
             {
-                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu or [3] for the desserts or [0] to go back to the menu.");
-                int x = validateInt();
+                Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
+                int x = Convert.ToInt32(checkInt());
                 if (x == 1)
                 {
                     newDishes(lstApettizers);
@@ -102,9 +133,14 @@ namespace ProjectB_Group2
                 {
                     newDishes(lstDesserts);
                 }
+                else if (x == 0)
+                {
+
+                }
                 else
                 {
-                    Console.WriteLine("Back to the main menu.");
+                    Console.WriteLine("Incorrect Value, Please enter one of the characters specified above!");
+                    AddDishes();
                 }
 
             }
@@ -144,7 +180,17 @@ namespace ProjectB_Group2
                     {
                         Console.WriteLine();
                         Console.WriteLine("What is the new price of " + change + "?");
-                        double NewPrice = Convert.ToDouble(Console.ReadLine());
+                        string check = Console.ReadLine();
+                        double NewPrice;
+                        if (Double.TryParse(check, out NewPrice))
+                            Console.WriteLine("'{0}' --> {1}", check, NewPrice);
+                        else
+                            Console.WriteLine("Incorrect value, Please enter a number:");
+                        while (!Double.TryParse(check, out NewPrice))
+                        {
+                            Console.WriteLine("Enter the price of the dish:");
+                            check = Console.ReadLine();
+                        }
                         lst[i].Price = NewPrice;
                         Console.WriteLine();
                         Console.WriteLine("The Price of " + change + " was updated to: " + NewPrice);
@@ -160,7 +206,7 @@ namespace ProjectB_Group2
             {
 
                 Console.WriteLine("Enter the amount of dishes you want to add: ");
-                int x = Convert.ToInt32(Console.ReadLine());
+                int x = Convert.ToInt32(checkInt()); 
                 for (int i = 0; i < x; i++)
                 {
                     Console.WriteLine();
@@ -168,7 +214,18 @@ namespace ProjectB_Group2
                     string name = validateString();
                     Console.WriteLine();
                     Console.WriteLine("Enter the price of the dish:");
-                    double price = Convert.ToDouble(Console.ReadLine());
+                    string check = Console.ReadLine();
+                    double price;
+                    if (Double.TryParse(check, out price))
+                        Console.WriteLine("'{0}' --> {1}", check, price);
+                    else
+                        Console.WriteLine("Incorrect value, Please enter a number:");
+                        while (!Double.TryParse(check, out price))
+                    {
+                        Console.WriteLine("Enter the price of the dish:");
+                        check = Console.ReadLine();
+                    }
+
                     Console.WriteLine();
                     Console.WriteLine("Enter the description of the given dish:");
                     string description = validateString();
@@ -189,7 +246,7 @@ namespace ProjectB_Group2
             public static void RemoveDishes()
             {
                 Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
-                int x = validateInt();
+                int x = Convert.ToInt32(checkInt());
                 if (x == 1)
                 {
                     RemoveDish(lstApettizers);
@@ -202,10 +259,14 @@ namespace ProjectB_Group2
                 {
                     RemoveDish(lstDesserts);
                 }
+                else if (x == 0)
+                {
+
+                }
                 else
                 {
-                    Console.WriteLine("Back to the main menu.");
-
+                    Console.WriteLine("Incorrect value, Please enter one of the characters specified above!");
+                    AddDishes();
                 }
 
             }
@@ -215,7 +276,7 @@ namespace ProjectB_Group2
             public static void ChangePrices()
             {
                 Console.WriteLine("Choose [1] for appetizers, [2] for the main menu, [3] for the desserts or [0] to go back to the menu.");
-                int x = validateInt();
+                int x = Convert.ToInt32(checkInt());
                 if (x == 1)
                 {
                     ChangePrice(lstApettizers);
@@ -228,9 +289,14 @@ namespace ProjectB_Group2
                 {
                     ChangePrice(lstDesserts);
                 }
+                else if (x == 0)
+                {
+
+                }
                 else
                 {
-                    Console.WriteLine("Back to the main menu.");
+                    Console.WriteLine("Incorrect Value, Please enter one of the characters specified above!");
+                    AddDishes();
                 }
 
             }
@@ -274,7 +340,6 @@ namespace ProjectB_Group2
                     x = Console.ReadLine();
                 }
                 return x;
-
             }
 
             public static bool isNumeric(string s)
@@ -300,13 +365,11 @@ namespace ProjectB_Group2
             public static void MenuFunction()
 
             {
-                //string json = JsonSerializer.Serialize(lstApettizers);
-                //Console.WriteLine(json);
-
+                Dishes.InitMenu(lstApettizers, lstMainMenu, lstDesserts);
 
                 //=========================== Main menu screen where you choose what to do ==========================================================
-                char[] charArray = new char[] { 'P', 'Y', 'N', 'M', 'C' };
-                Console.WriteLine("What do you want to do?\n[Y] for Adding dishes to the Menu\n[N] for Removing dishes from the Menu\n[M] for Displaying the Menu\n[C] to Change the price of a dish\n[E] other key to exit");
+                char[] charArray = new char[] { '1', '2', '3', '4', '5' };
+                Console.WriteLine("What do you want to do?\n[1] for Adding dishes to the Menu\n[2] for Removing dishes from the Menu\n[3] for Displaying the Menu\n[4] to Change the price of a dish\n[5] to exit");
                 bool check = true;
                 char answer = 'E';
                 while (check)
@@ -327,42 +390,42 @@ namespace ProjectB_Group2
                             check = false;
                         }
                     }
+
                     if (check == true)
                     {
-                        Console.WriteLine("{0} isn't a valid character, please enter one of the characters defined above to proceed in the program.", answer);
+                        Console.WriteLine("Please try again!");
                     }
                 }
 
-                if (answer == 'Y')
+                if (answer == '1')
                 {
                     Console.Clear();
                     AddDishes();
-                    Console.Clear();
-                    
+                    Console.WriteLine();
+
                 }
-                else if (answer == 'N')
+                else if (answer == '2')
                 {
                     Console.Clear();
                     RemoveDishes();
-                    Console.Clear();
-                    
+                    Console.WriteLine();
+
                 }
-                else if (answer == 'M')
+                else if (answer == '3')
                 {
                     Console.Clear();
                     DisplayMenu(lstApettizers, lstMainMenu, lstDesserts);
-                    Console.Clear();
-                    
+                    Console.WriteLine();
+
                 }
-                else if (answer == 'C')
+                else if (answer == '4')
                 {
                     Console.Clear();
                     ChangePrices();
-                    Console.Clear();
-                   
+                    Console.WriteLine();
 
                 }
-                else if (answer == 'E')
+                else if (answer == '5')
                 {
                     Environment.Exit(0);
                 }

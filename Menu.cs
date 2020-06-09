@@ -44,7 +44,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     rv = true;
-                    Review2.Review.ReviewFunction();
+                    Review2.Review.ReviewsFunction();
                 }
 
                 else if (Menu.i == 4)

@@ -12,19 +12,16 @@ namespace ProjectB_Group2
             public string Name;
             public string LastName;
             public int Stars;
-            public string PhoneNumber;
-            public string Mail;
             public string[] Comments;
             static List<Review> Objects = new List<Review>();
 
-            public Review(string name, string lastname, int Stars, string PhoneNumber, string Mail, string[] comments)
+            public Review(string name, string lastname, int Stars, string[] comments)
             {
                 this.Name = name;
                 this.LastName = lastname;
                 this.Comments = comments;
                 this.Stars = Stars;
-                this.PhoneNumber = PhoneNumber;
-                this.Mail = Mail;
+
             }
             // ================================= Confirmation ======================================
             public void confirmation()
@@ -45,7 +42,6 @@ namespace ProjectB_Group2
                 string line = new String('-', (100));
                 Console.WriteLine(line);
                 Console.WriteLine(this.Name + " " + this.LastName + "\n");
-                Console.WriteLine(this.PhoneNumber + " " + this.Mail + "\n");
                 Console.WriteLine(this.Stars);
                 for (int i = 0; i < Comments.Length; i++)
                 {
@@ -58,7 +54,7 @@ namespace ProjectB_Group2
             // ================================= Add Comment ======================================
             public static void WriteComment()
             {
-                string name, Lastname, comment, Mail, PhoneNumber;
+                string name, Lastname, comment;
                 int Stars;
                 int i, count;
                 string[] addComment = new string[40];
@@ -96,12 +92,6 @@ namespace ProjectB_Group2
                 }
 
 
-                Console.WriteLine("Please enter your phone number: (Purely for us)");
-                PhoneNumber = ProjectB_Group2.Program.Dishes.checkInt();
-
-                Console.WriteLine("Please enter your mail address: (Purely for us)");
-                Mail = ProjectB_Group2.Program.Dishes.validateString();
-
                 Console.WriteLine("Add your comment below:");
                 for (i = 0, count = 0; (comment = Console.ReadLine()) != "" && i < addComment.Length; i++)
                 {
@@ -116,13 +106,13 @@ namespace ProjectB_Group2
                     newArrComments[i] = addComment[i];
                 }
 
-                Review newComment = new Review(name, Lastname, Stars, PhoneNumber, Mail, newArrComments);
+                Review newComment = new Review(name, Lastname, Stars, newArrComments);
                 Objects.Add(newComment);
                 newComment.confirmation();
 
             }
 
-            public static void ReviewFunction()
+            public static void ReviewsFunction()
             {
                 char[] charArray = new char[] { '1', '2', '3' };
                 Console.WriteLine("Do you want to leave a commment or see the comment section?" +
@@ -148,7 +138,7 @@ namespace ProjectB_Group2
                     }
                     if (check == true)
                     {
-                        Console.WriteLine("{0} isn't a valid character, please enter one of the characters defined above to proceed in the program.", answer);
+                        Console.WriteLine("Please try again!");
                     }
                 }
 
@@ -156,7 +146,6 @@ namespace ProjectB_Group2
                 {
                     Console.Clear();
                     WriteComment();
-                    Console.Clear();
                 }
                 else if (answer == '2')
                 {
@@ -166,8 +155,9 @@ namespace ProjectB_Group2
                         comments.DisplayComments();
                     }
                 }
-                else
+                else if (answer == '3')
                 {
+                    //  ========================================== Hierna moet je teruggestuurd worden naar het menu ==============================================================
                     return;
                 }
 
