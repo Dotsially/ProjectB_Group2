@@ -35,15 +35,17 @@ namespace ReservationAmount
             bool CheckYN = false;
             bool allDigits = false;
             bool allDigits2 = false;
+            
 
             static void ViewReserv()
             {
-                using (StreamReader file = File.OpenText(@"d:\test.json"))
+                using (StreamReader reader = new StreamReader(@"d:\reservations.json"))
                 {
-                    Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
-                    reservation movie2 = (reservation)serializer.Deserialize(file, typeof(reservation));
-                    Console.WriteLine(movie2);
+                    string json = reader.ReadToEnd();
+                    dynamic files = JsonConvert.DeserializeObject(json);
+                    Console.WriteLine(json);
                 }
+
             }
 
 
@@ -52,7 +54,30 @@ namespace ReservationAmount
                 Console.WriteLine("Under which name can we register the reservation?");
                 string ResName = Console.ReadLine();
                 Console.WriteLine("Under which date can we register the reservation?\n Please enter date with format below\n 'xx-xx-xxxx'\n Example: 04-07-2020");
-                string ResDate = Console.ReadLine();
+                string ResDate = Console.ReadLine(), format = "";
+                try
+                {
+                    if (ResDate.Contains("-"))
+                    {
+                        format = "dd-MM-yyyy";
+                    }
+                    else if (ResDate.Contains("/"))
+                    {
+                        format = "dd/MM/yyyy";
+                    }
+                    else if (ResDate.Contains("."))
+                    {
+                        format = "dd.MM.yyyy";
+                    }
+                    else if (ResDate.Contains(" "))
+                    {
+                        format = "dd MM yyyy";
+                    }
+
+                    DateTime date = DateTime.ParseExact(ResDate, format, System.Globalization.CultureInfo.InvariantCulture);
+                    Console.WriteLine(date.ToShortDateString());
+                }
+                catch (Exception) { }
 
                 // Make object for reservation
                 reservation resobj = new reservation()
@@ -61,56 +86,59 @@ namespace ReservationAmount
                     ResDate = ResDate
                 };
 
-                //Write to .Json File (location on drive needs to be edited for final version)
-                using (StreamWriter file = File.AppendText(@"d:\test.json"))
+                //Write to .Json File 
+                using (StreamWriter file = File.AppendText(@"d:\reservations.json"))
                 {
                     Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
                     serializer.Serialize(file, resobj);
+
+ 
                 }
-                
-
-
-
-
-
-
-
-
-
-
-
             }
 
-            // INTRO, SHOW CAPACITY AND ENTER HOW MANY PEOPLE YOU WANT TO RESERVE FOR. 
-            Console.WriteLine("Enter '1' to make a reservation\nEnter '2' to view reservations");
-            int answer = Convert.ToInt32(Console.ReadLine());
-            if (answer == 1)
+            static void MainMenu()
             {
-                Reserve();
+                // INTRO, SHOW CAPACITY AND ENTER HOW MANY PEOPLE YOU WANT TO RESERVE FOR. 
+                Console.WriteLine("Enter '1' to make a reservation\nEnter '2' to view reservations");
+
+
+                int answer = Convert.ToInt32(Console.ReadLine());
+
+
+                if (answer == 1)
+                {
+                    Console.Clear();
+                    Reserve();
+                }
+                if (answer == 2)
+                {
+                    Console.Clear();
+                    ViewReserv();
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter a valid number!");                  
+                    MainMenu();
+                }
             }
-            else if (answer == 2)
-            {
-                ViewReserv();
-            }
+
+            MainMenu();
 
             Console.WriteLine("We have a total of " + TotalCapacity + " seats.");
-            Console.WriteLine("Hello! How many people will be visiting us?");
+            Console.WriteLine(" How many people will be visiting us?");
             ReservationAmount = Console.ReadLine();
             //res = Convert.ToInt32(ReservationAmount);
-
-
-
 
             //check if input is a number or not.
             allDigits = ReservationAmount.All(char.IsDigit);
             Console.WriteLine(allDigits);
 
-
             if (allDigits == false)
             {
                 while (allDigits == false)
                 {
-                    Console.WriteLine("Hello! How many people will be visiting us?");
+                    Console.WriteLine("How many people will be visiting us?");
                     ReservationAmount = Console.ReadLine();
                     allDigits = ReservationAmount.All(char.IsDigit);
 
@@ -199,7 +227,7 @@ namespace ReservationAmount
             {
                 while (allDigits2 == false)
                 {
-                    Console.WriteLine("Hello! How many people will be visiting us?");
+                    Console.WriteLine("How many people will be visiting us?");
                     ReservationAmount = Console.ReadLine();
                     allDigits2 = ReservationAmount.All(char.IsDigit);
 
