@@ -427,7 +427,7 @@ namespace ProjectB_Group2
                 }
                 else if (answer == '5')
                 {
-                    Environment.Exit(0);
+                    
                 }
             }
         }

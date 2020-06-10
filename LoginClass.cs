@@ -16,8 +16,10 @@ namespace ProjectB_Group2
         static string jsonString;
         static bool signupcheck = false;
         static bool loginrun = true;
+        static bool userrun = true;
         static bool numbercheckbool = true;
-   
+        public static bool admin = false;
+        static string user;
         static Dictionary<string, string> accounts = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonpathread("accounts.json"));
         static bool accountcheck(string x, string y)
         {
@@ -28,27 +30,50 @@ namespace ProjectB_Group2
             return false;
 
         }
-
+        public static void UserMethod()
+        {
+            Console.WriteLine("Welcome! Do you want to log on as an guest or admin?");
+            Console.WriteLine("[A] Admin [G] Guest\n");
+            user = Console.ReadLine();
+        }
         //Main function
         public static void LoginMethod()
         {
-
-            while (loginrun)
+            while (userrun)
             {
-                Console.WriteLine("Please login to proceed. \nDon't have an account? Sign up now!");
-                Colorful.Console.WriteLine("[1]Login [2]Sign up", Color.Yellow);
-                c = Console.ReadLine();
-                Console.WriteLine("");
-                Numbercheck(c, n);
-                while (numbercheckbool)
+                UserMethod();
+                if (user == "A")
                 {
-                    c = Console.ReadLine();
-                    Numbercheck(c, n);
-                }
-                jsonString = JsonConvert.SerializeObject(accounts);
+                    userrun = false;
+                    Console.Clear();
+                    while (loginrun)
+                    {
+                        Console.WriteLine("Please login to proceed. \nDon't have an account? Sign up now!");
+                        Colorful.Console.WriteLine("[1]Login [2]Sign up", Color.Yellow);
+                        c = Console.ReadLine();
+                        Console.WriteLine("");
+                        Numbercheck(c, n);
+                        while (numbercheckbool)
+                        {
+                            c = Console.ReadLine();
+                            Numbercheck(c, n);
+                        }
+                        jsonString = JsonConvert.SerializeObject(accounts);
 
+                    }
+                    File.WriteAllText(jsonpathwrite("accounts.json"), jsonString);
+                }
+                else if (user == "G")
+                {
+                    userrun = false;
+                    Console.Clear();
+                    Console.WriteLine("Welcome guest user!");
+                }
+                else
+                {
+                    Console.WriteLine("That's an invalid input. Please try again!");
+                }
             }
-            File.WriteAllText(jsonpathwrite("accounts.json"), jsonString);
         }
         
         //Sign up function.
@@ -101,7 +126,8 @@ namespace ProjectB_Group2
             }
             else
             {
-                Console.WriteLine("");
+                admin = true;
+                Console.Clear();
                 Console.WriteLine("Welcome " + a + "!");
                 loginrun = false;
             }

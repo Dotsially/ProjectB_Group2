@@ -12,72 +12,19 @@ namespace ProjectB_Group2
         static bool fmenu = false;
         static bool rv = false;
         static bool rs = false;
+        static bool bt = false;
         public static void MainMenu()
         {
-            while (mmenu)
+            if (LoginClass.admin)
             {
-
-                Colorful.Console.WriteLine("[1]Menu [2]Reservation [3]Reviews [4]Quit", Color.Yellow);
-                Colorful.Console.WriteLine("Welcome to our Restaurant please choose a number to proceed: ", Color.Yellow);
-                Menu.Numbercheck(ref mmenu);
-
-                while (!Menu.numcheck)
-                {
-                    Colorful.Console.WriteLine("That's an invalid number", Color.Red);
-                    Menu.Numbercheck(ref mmenu);
-                }
-
-                if (Menu.i == 1)
-                {
-                    mmenu = false;
-                    fmenu = true;
-                    Program.Dishes.MenuFunction();
-                }
-
-                else if (Menu.i == 2)
-                {
-                    mmenu = false;
-                    rs = true;
-                    ReservationsClass.Resevations();
-                }
-
-                else if (Menu.i == 3)
-                {
-                    mmenu = false;
-                    Review2.Review.ReviewsFunction();
-                    rv = true;
-                }
-
-                else if (Menu.i == 4)
-                {
-                    mmenu = false;
-                    MainFile.run = false;
-                }
-                else
-                {
-                    Colorful.Console.WriteLine("That's an invalid number", Color.Red);
-                }
-
+                MenuAdmin();
             }
-
-            while (fmenu == true)
+            else
             {
-                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
-                Menu.Numbercheck(ref fmenu);
+                MenuUser();
             }
+            
 
-            while (rv == true)
-            {
-                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
-                Menu.Numbercheck(ref rv);
-            }
-
-            while (rs == true)
-            {
-                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
-                Menu.Numbercheck(ref rs);
-
-            }
 
 
         }
@@ -109,6 +56,165 @@ namespace ProjectB_Group2
             {
                 Colorful.Console.WriteLine("That's an invalid number", Color.Red);
             }
+        }
+        public static void MenuAdmin()
+        {
+            while (mmenu)
+            {
+                Colorful.Console.WriteLine("[1]Menu [2]Reservation [3]Reviews [4]Bank Transfer [5]Quit", Color.Yellow);
+                Colorful.Console.WriteLine("Welcome to our Restaurant please choose a number to proceed: ", Color.Yellow);
+                Numbercheck(ref mmenu);
+
+                while (!Menu.numcheck)
+                {
+                    Colorful.Console.WriteLine("That's an invalid number", Color.Red);
+                    Numbercheck(ref mmenu);
+                }
+
+                if (Menu.i == 1)
+                {
+                    mmenu = false;
+                    Console.Clear();
+                    Program.Dishes.MenuFunction();
+                    fmenu = true;
+                }
+
+                else if (Menu.i == 2)
+                {
+                    mmenu = false;
+                    Console.Clear();
+                    ReservationsClass.Resevations();
+                    rs = true;
+                }
+
+                else if (Menu.i == 3)
+                {
+                    mmenu = false;
+                    Console.Clear();
+                    Review2.Review.ReviewsFunction();
+                    rv = true;
+                }
+
+                else if (Menu.i == 4)
+                {
+                    mmenu = false;
+                    Console.Clear();
+                    BankTransferClass.BankTransfer();
+                    bt = true;
+                }
+                else if (Menu.i == 5)
+                {
+                    mmenu = false;
+                    MainFile.run = false;
+                }
+                else
+                {
+                    Colorful.Console.WriteLine("That's an invalid number", Color.Red);
+                }
+
+            }
+
+            while (fmenu == true)
+            {
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
+                Numbercheck(ref fmenu);
+                Console.Clear();
+            }
+
+            while (rv == true)
+            {
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
+                Numbercheck(ref rv);
+                Console.Clear();
+            }
+
+            while (rs == true)
+            {
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
+                Numbercheck(ref rs);
+                Console.Clear();
+
+            }
+            while (bt == true)
+            {
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
+                Numbercheck(ref bt);
+                Console.Clear();
+
+            }
+        }
+        public static void MenuUser()
+        {
+            while (mmenu)
+            {
+                Colorful.Console.WriteLine("[1]Menu [2]Reservation [3]Reviews [4]Quit", Color.Yellow);
+                Colorful.Console.WriteLine("Welcome to our Restaurant please choose a number to proceed: ", Color.Yellow);
+                Numbercheck(ref mmenu);
+
+                while (!Menu.numcheck)
+                {
+                    Colorful.Console.WriteLine("That's an invalid number", Color.Red);
+                    Numbercheck(ref mmenu);
+                }
+
+                if (Menu.i == 1)
+                {
+                    mmenu = false;
+                    Console.Clear();
+                    Program.Dishes.MenuFunction();
+                    fmenu = true;
+                }
+
+                else if (Menu.i == 2)
+                {
+                    mmenu = false;
+                    Console.Clear();
+                    ReservationsClass.Resevations();
+                    rs = true;
+                }
+
+                else if (Menu.i == 3)
+                {
+                    mmenu = false;
+                    Console.Clear();
+                    Review2.Review.ReviewsFunction();
+                    rv = true;
+                }
+
+                else if (Menu.i == 4)
+                {
+                    mmenu = false;
+                    MainFile.run = false;
+                }
+                else
+                {
+                    Colorful.Console.WriteLine("That's an invalid number", Color.Red);
+                }
+
+            }
+
+            while (fmenu == true)
+            {
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
+                Numbercheck(ref fmenu);
+                Console.Clear();
+            }
+
+            while (rv == true)
+            {
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
+                Numbercheck(ref rv);
+                Console.Clear();
+            }
+
+            while (rs == true)
+            {
+                Colorful.Console.WriteLine("[0] To Return", Color.Yellow);
+                Numbercheck(ref rs);
+                Console.Clear();
+
+            }
+            
         }
     }
 }

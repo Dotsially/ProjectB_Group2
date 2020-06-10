@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using System.Text.Json;
 using System.IO;
 
 
-namespace BankTransfer
+namespace ProjectB_Group2
 {
     public class BankAccount
     {
         public double CompanyBalance { get; set; }
         public string Title { get; set; }
-        
+
         public BankAccount(double income)
         {
             CompanyBalance = income;
@@ -35,7 +35,7 @@ namespace BankTransfer
 
         public void withdraw(double amount)
         {
-            if(amount > CompanyBalance)
+            if (amount > CompanyBalance)
             {
                 Console.WriteLine("Insufficient balance");
             }
@@ -43,7 +43,7 @@ namespace BankTransfer
             {
                 CompanyBalance -= amount;
             }
-            
+
         }
 
         public virtual string Info()
@@ -77,26 +77,26 @@ namespace BankTransfer
         public override string Info()
         {
             return $"{Title} currently holds: {CompanyBalance} $";
-            
+
         }
         public void DailyRevenue(BankAccount obj)
         {
-            
+
             Console.WriteLine($"The total amount off {CompanyBalance} has been added to the company bank account. " +
                 $"Total balance is {obj.CompanyBalance + this.CompanyBalance}");
             obj.CompanyBalance += this.CompanyBalance;
         }
 
     }
-    class Program
+    class BankTransferClass
     {
-        static void Main(string[] args)
+        public static void BankTransfer()
         {
             //Global variable/object, so we don't have multiple objects.
-            string fileName = @"c:\MyJson.txt"; //Can be left out in case system doesn't have "C" location.
+            string fileName = Filemanager.jsonpathwrite("BankTransfer.txt"); //Can be left out in case system doesn't have "C" location.
             string jsonString = File.ReadAllText(fileName);
 
-            CompanyThreshold companyThreshold = new CompanyThreshold(1000); 
+            CompanyThreshold companyThreshold = new CompanyThreshold(1000);
             BankAccount bankAccount = JsonSerializer.Deserialize<BankAccount>(jsonString);
 
             Console.WriteLine("Enter your bank account: ");
@@ -104,7 +104,8 @@ namespace BankTransfer
             Console.WriteLine("Enter your password: ");
             string password = Console.ReadLine();
 
-            if (companyThreshold.LoginIn(account, password)) {
+            if (companyThreshold.LoginIn(account, password))
+            {
 
                 Console.WriteLine("Enter [D] for deposite, [W] for withdraw, [I] for balance information, [R] to deposite daily revenue to bank account or [E] to exit.");
                 char answer = validateChar();
@@ -167,7 +168,7 @@ namespace BankTransfer
         }
         public static void writeJson()
         {
-            
+
         }
 
     }
