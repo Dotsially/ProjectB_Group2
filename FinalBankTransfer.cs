@@ -93,11 +93,11 @@ namespace ProjectB_Group2
         public static void BankTransfer()
         {
             //Global variable/object, so we don't have multiple objects.
-            string fileName = "MyJson.txt"; //Can be left out in case system doesn't have "C" location.
+            string fileName = Filemanager.jsonpathwrite("BankTransfer.txt"); //Can be left out in case system doesn't have "C" location.
             string jsonString = File.ReadAllText(fileName);
 
             CompanyThreshold companyThreshold = new CompanyThreshold(1000);
-            BankAccount bankAccount = JsonSerializer.Deserialize<BankAccount>(jsonString);
+            BankAccount bankAccount = new BankAccount();
 
             Console.WriteLine("Enter your bank account: ");
             string account = Console.ReadLine();
