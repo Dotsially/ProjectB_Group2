@@ -362,14 +362,14 @@ namespace ProjectB_Group2
 
             }
 
-            public static void MenuFunction()
+            public static void MenuFunctionAdmin()
 
             {
                 Dishes.InitMenu(lstApettizers, lstMainMenu, lstDesserts);
 
                 //=========================== Main menu screen where you choose what to do ==========================================================
                 char[] charArray = new char[] { '1', '2', '3', '4', '5' };
-                Console.WriteLine("What do you want to do?\n[1] for Adding dishes to the Menu\n[2] for Removing dishes from the Menu\n[3] for Displaying the Menu\n[4] to Change the price of a dish\n[5] to exit");
+                Console.WriteLine("What do you want to do?\n[1] Add dishes to the menu\n[2] Remove dishes from the Menu\n[3] Display the Menu\n[4] Change the price of a dish\n[5] Exit");
                 bool check = true;
                 char answer = 'E';
                 while (check)
@@ -428,6 +428,52 @@ namespace ProjectB_Group2
                 else if (answer == '5')
                 {
                     
+                }
+            }
+            public static void MenuFunctionUser()
+
+            {
+                Dishes.InitMenu(lstApettizers, lstMainMenu, lstDesserts);
+
+                //=========================== Main menu screen where you choose what to do ==========================================================
+                char[] charArray = new char[] { '1', '2'};
+                Console.WriteLine("What do you want to do?\n[1] Display the Menu\n[2] Exit");
+                bool check = true;
+                char answer = 'E';
+                while (check)
+                {
+                    try
+                    {
+                        answer = Convert.ToChar(Console.ReadLine());
+                        answer = char.ToUpper(answer);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("That's not a character, please enter one of the characters defined above to proceed in the program.");
+                    }
+                    for (int i = 0; i < charArray.Length; i++)
+                    {
+                        if (answer == charArray[i])
+                        {
+                            check = false;
+                        }
+                    }
+
+                    if (check == true)
+                    {
+                        Console.WriteLine("Please try again!");
+                    }
+                }
+                if (answer == '1')
+                {
+                    Console.Clear();
+                    DisplayMenu(lstApettizers, lstMainMenu, lstDesserts);
+                    Console.WriteLine();
+
+                }
+                else if (answer == '2')
+                {
+
                 }
             }
         }

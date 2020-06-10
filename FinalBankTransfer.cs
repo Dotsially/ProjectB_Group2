@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 using System.IO;
-
+using System.Reflection;
 
 namespace ProjectB_Group2
 {
@@ -93,7 +93,7 @@ namespace ProjectB_Group2
         public static void BankTransfer()
         {
             //Global variable/object, so we don't have multiple objects.
-            string fileName = Filemanager.jsonpathwrite("BankTransfer.txt"); //Can be left out in case system doesn't have "C" location.
+            string fileName = "MyJson.txt"; //Can be left out in case system doesn't have "C" location.
             string jsonString = File.ReadAllText(fileName);
 
             CompanyThreshold companyThreshold = new CompanyThreshold(1000);

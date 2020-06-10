@@ -112,11 +112,11 @@ namespace ProjectB_Group2
 
             }
 
-            public static void ReviewsFunction()
+            public static void ReviewsFunctionUser()
             {
                 char[] charArray = new char[] { '1', '2', '3' };
                 Console.WriteLine("Do you want to leave a commment or see the comment section?" +
-                    "Press [1] to leave a comment, [2] to see the comments or [3] for no."); bool check = true;
+                    "\n[1] Leave a comment \n[2] See the comments \n[3] Exit."); bool check = true;
                 char answer = 'E';
                 while (check)
                 {
@@ -156,6 +156,52 @@ namespace ProjectB_Group2
                     }
                 }
                 else if (answer == '3')
+                {
+                    //  ========================================== Hierna moet je teruggestuurd worden naar het menu ==============================================================
+                    return;
+                }
+
+            }
+            public static void ReviewsFunctionAdmin()
+            {
+                char[] charArray = new char[] { '1', '2', '3' };
+                Console.WriteLine("Do you want to leave a commment or see the comment section?" +
+                    "\n[1] See the comments \n[2] Exit."); bool check = true;
+                char answer = 'E';
+                while (check)
+                {
+                    try
+                    {
+                        answer = Convert.ToChar(Console.ReadLine());
+                        answer = char.ToUpper(answer);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("That's not a character, please enter one of the characters defined above to proceed in the program.");
+                    }
+                    for (int i = 0; i < charArray.Length; i++)
+                    {
+                        if (answer == charArray[i])
+                        {
+                            check = false;
+                        }
+                    }
+                    if (check == true)
+                    {
+                        Console.WriteLine("Please try again!");
+                    }
+                }
+
+               
+                if (answer == '1')
+                {
+                    Console.Clear();
+                    foreach (Review comments in Objects)
+                    {
+                        comments.DisplayComments();
+                    }
+                }
+                else if (answer == '2')
                 {
                     //  ========================================== Hierna moet je teruggestuurd worden naar het menu ==============================================================
                     return;

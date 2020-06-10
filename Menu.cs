@@ -75,7 +75,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     Console.Clear();
-                    Program.Dishes.MenuFunction();
+                    Program.Dishes.MenuFunctionAdmin();
                     fmenu = true;
                 }
 
@@ -83,7 +83,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     Console.Clear();
-                    ReservationsClass.Resevations();
+                    ReservationsClass.ResevationsAdmin();
                     rs = true;
                 }
 
@@ -91,7 +91,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     Console.Clear();
-                    Review2.Review.ReviewsFunction();
+                    Review2.Review.ReviewsFunctionAdmin();
                     rv = true;
                 }
 
@@ -161,7 +161,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     Console.Clear();
-                    Program.Dishes.MenuFunction();
+                    Program.Dishes.MenuFunctionUser();
                     fmenu = true;
                 }
 
@@ -169,7 +169,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     Console.Clear();
-                    ReservationsClass.Resevations();
+                    ReservationsClass.ResevationsUser();
                     rs = true;
                 }
 
@@ -177,7 +177,7 @@ namespace ProjectB_Group2
                 {
                     mmenu = false;
                     Console.Clear();
-                    Review2.Review.ReviewsFunction();
+                    Review2.Review.ReviewsFunctionUser();
                     rv = true;
                 }
 
