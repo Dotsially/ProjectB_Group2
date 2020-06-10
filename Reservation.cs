@@ -14,18 +14,18 @@ namespace ProjectB_Group2
 
     public class reservation
     {
-        public string ResName { get; set; }
-        public string ResDate { get; set; }
-        public string ResSeats { get; set; }
+        public string Name { get; set; }
+        public string Date { get; set; }
+        public string Seats { get; set; }
 
 
     }
 
     public class ReservationsClass
     {
-        static string Name;
-        static string Date;
-        static string Seats;
+        static string SResName;
+        static string SResDate;
+        static string SResSeats;
         
         //static reservation file = JsonConvert.DeserializeObject<reservation>(Path.Combine(jsondoc, @"Restaurant/json/reservations.json"));
 
@@ -176,28 +176,26 @@ namespace ProjectB_Group2
                     ReservationAmount = Console.ReadLine();
                     res = Convert.ToInt32(ReservationAmount);
                 }
-                Seats = ReservationAmount;
+                SResSeats = ReservationAmount;
 
-               // reservation resobj = new reservation
-                //{
-                //    ResName = Name,
-                //    ResDate = Date,
-                //    ResSeats = Seats
-               // };
-               // List<reservation> resobjArray = new List<reservation>
-               // {
-               //   resobj,
-               //   resobj
-               // };
-               // resobjArray.Add(file);
-               // var dataObj = new
-               // {
-               //     Data = resobjArray
-               // };
+                reservation resobj = new reservation
+                {
+                    Name = SResName,
+                    Date = SResDate,
+                    Seats = SResSeats
+                };
+                string[] restxt = { SResName, SResDate, SResSeats };
+                string path = jsonpathwrite("reservations.txt");
 
-                //Write to .Json File 
-               // string json = JsonConvert.SerializeObject(resobj);
-               // File.WriteAllText(Path.Combine(jsondoc, @"Restaurant/json/reservations.json"), json);
+
+
+                Console.WriteLine();
+                File.AppendAllText(path, "------------------------------\n");
+                File.AppendAllText(path, "Name: "+ SResName + "\n");
+                File.AppendAllText(path, "Date: " + SResDate +"\n");
+                File.AppendAllText(path, "Seats: " + SResSeats +"\n");
+                File.AppendAllText(path, "------------------------------\n");
+
             }
             else if (answer == 2)
             {
@@ -219,8 +217,17 @@ namespace ProjectB_Group2
         }
         static void ViewReserv()
         {
-            JObject o1 = JObject.Parse(File.ReadAllText(Path.Combine(jsondoc, @"Restaurant/json/reservations.json")));
-            Console.WriteLine(o1);
+            
+                string path = jsonpathwrite("reservations.txt");
+                string[] lines = File.ReadAllLines(path);
+
+                foreach (string line in lines)
+                    Console.WriteLine(line);
+
+                Console.ReadLine();
+                Console.Clear();
+
+            
 
         }
         public static void Reserve()
@@ -252,8 +259,8 @@ namespace ProjectB_Group2
                 Console.WriteLine(date.ToShortDateString());
             }
             catch (Exception) { }
-            Name = ResName;
-            Date = ResDate;
+            SResName = ResName;
+            SResDate = ResDate;
 
         }
         // INTRO, SHOW CAPACITY AND ENTER HOW MANY PEOPLE YOU WANT TO RESERVE FOR. 

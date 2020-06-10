@@ -77,7 +77,7 @@ namespace ProjectB_Group2
         {
             FolderCreator(RestaurantDirec());
             FolderCreator(foldercreate("json"));
-            FileCreate2(jsonfilecreate("reservations.json"));
+            FileCreate2(jsonfilecreate("reservations.txt"));
             FileCreate2(jsonfilecreate("BankTransfer.txt"));
             FileCreator(jsonfilecreate("accounts.json"), "", "");
         }
